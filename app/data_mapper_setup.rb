@@ -1,5 +1,6 @@
 require 'data_mapper'
 require 'dm-validations'
+require 'dm-timestamps'
 
 env = ENV['RACK_ENV'] || 'development'
 

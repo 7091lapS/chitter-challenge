@@ -11,6 +11,7 @@ require './app/data_mapper_setup'
 require './app/chitter'
 require 'database_cleaner'
 require_relative 'helpers/session_helper.rb'
+require_relative 'helpers/navigation_helper.rb'
 require 'factory_girl'
 
 Capybara.app = Chitter
@@ -20,6 +21,7 @@ RSpec.configure do |config|
   config.include Capybara::DSL
 
   config.include SessionHelpers
+  config.include NavigationHelpers
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
