@@ -2,10 +2,6 @@ feature 'Viewing peeps' do
 
   let!(:user) { FactoryGirl.create(:user) }
 
-  # before do
-  #   Timecop.freeze(Time.local(1990))
-  # end
-
   scenario 'I can see existing peeps on the peeps page' do
     user.peeps.create(content: 'hello')
     visit '/peeps'

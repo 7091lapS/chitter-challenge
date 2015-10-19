@@ -1,15 +1,9 @@
-#require 'byebug'
 feature 'User sign up' do
 
   scenario 'needs a valid email' do
     user_wrong_email = build(:user, email: 'invalid')
     expect {sign_up(user_wrong_email)}.not_to change(User, :count)
   end
-
-  # scenario 'needs a valid pwd' do
-  #   user_wrong_pwd = build(:user, password: '')
-  #   expect {sign_up(user_wrong_pwd)}.not_to change(User, :count)
-  # end
 
   scenario 'needs a confirmation password' do
     user_wrong_confirmation = build(:user, password_confirmation: 'wrong')

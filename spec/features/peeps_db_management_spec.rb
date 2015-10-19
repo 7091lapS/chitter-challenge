@@ -1,6 +1,6 @@
 feature 'Users have their own peeps stored in database' do
 
-   let!(:user) { FactoryGirl.create(:user, username:'owner', email: 'a@a.com') }
+  let!(:user) { FactoryGirl.create(:user, username:'owner', email: 'a@a.com') }
 
   scenario 'a users peep is stored' do
 
