@@ -4,6 +4,8 @@ require_relative 'data_mapper_setup'
 require_relative 'helpers/application_helper'
 class Chitter < Sinatra::Base
 
+  USER_PERMITTED_PARAMS = [:email, :name, :username, :password, :password_confirmation]
+
   enable :sessions
   set :session_secret, '8h2e9h%$@##&#@&$)^@#ADIZdfgwd'
   register Sinatra::Flash
@@ -21,7 +23,7 @@ class Chitter < Sinatra::Base
 
   post '/peeps' do
     user = current_user
-    peep = user.peeps.create(content: params[:new_peep])
+    user.peeps.create(content: params[:new_peep])
     redirect to('/peeps')
   end
 
@@ -31,7 +33,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/users' do
-    @user = User.create(username: params[:username], name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    @user = User.create(user_permitted_params(params))
     if @user.save
       session[:user_id] = @user.id
       redirect to('/peeps')
@@ -68,6 +70,10 @@ class Chitter < Sinatra::Base
     def current_user
       @current_user ||= User.get(session[:user_id])
     end
+  end
+
+  def user_permitted_params(parameters)
+    parameters.map{|key,value|[key.to_sym, value] if USER_PERMITTED_PARAMS.include?(key.to_sym)}.to_h
   end
 
 
