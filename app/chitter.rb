@@ -1,10 +1,12 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative 'data_mapper_setup'
 require_relative 'helpers/application_helper'
 class Chitter < Sinatra::Base
 
   enable :sessions
   set :session_secret, '8h2e9h%$@##&#@&$)^@#ADIZdfgwd'
+  register Sinatra::Flash
 
   use Rack::MethodOverride
 
@@ -44,6 +46,7 @@ class Chitter < Sinatra::Base
       session[:user_id] = user.id
       redirect to('/peeps')
     else
+      flash.now[:errors] = ['The username or password is incorrect']
       erb :'sessions/new'
     end
   end
