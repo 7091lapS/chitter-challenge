@@ -1,24 +1,22 @@
-Chitter Challenge
+Chitter Challenge [![Build Status](https://travis-ci.org/makersacademy/chitter-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/chitter-challenge)
 =================
 
-* Challenge time: Friday afternoon (+ weekend if you need it)
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is one of my weekend challenges while at Makers Academy. It's a twitter clone built with Sinatra. By building the project I consolidated my understanding of REST principles, SQL databases and the creation of domain models with an ORM.
 
-Challenge:
+Technologies
 -------
+- Sinatra to build the server
+- Postgres database with Datamapper ORM
+- Tested with Capybara and Factory Girl
 
-As usual please start by 
-
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
-
-We are going to write a little Twitter clone that will allow the users to post messages to a public stream.
-
-Features:
+Installation
 -------
+You need to have PostgreSQL installed, with Chitter_development and Chitter_test databases set up.
+Git clone the repository and run bundle install, then run rackup to launch the server.
 
-```sh
+User Stories
+-------
+```
 As a Maker
 So that I can post messages on Chitter as me
 I want to sign up for Chitter
@@ -44,29 +42,13 @@ So that I can better appreciate the context of a peep
 I want to see the time at which it was made
 ```
 
-Notes on functionality:
-------
+- The username and email are unique.
+- Peeps (posts to chitter) have the name of the maker and their user handle.
+- Use data mapper and postgres to save the data.
+- You don't have to be logged in to see the peeps.
+- You only can peep if you are logged in.
 
-* Drive the creation of your app using tests - either cucumber or rspec as you prefer
-* Makers sign up to chitter with their email, password, name and a user name (e.g. sam@makersacademy.com, s3cr3t, Samuel Russell Hampden Joseph, tansaku).
-* The username and email are unique.
-* Peeps (posts to chitter) have the name of the maker and their user handle.
-* Use bcrypt to secure the passwords.
-* Use data mapper and postgres to save the data.
-* You don't have to be logged in to see the peeps.
-* You only can peep if you are logged in.
-* Please ensure that you update your README to indicate the technologies used, and give instructions on how to install and run the tests
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
-
-Bonus:
+Still to implement
 -----
-
-If you have time you can implement the following:
-
-* In order to start a conversation as a maker I want to reply to a peep from another maker.
-
-And/Or:
-
-* Work on the css to make it look good (we all like beautiful things).
-
-Good luck and let the chitter begin!
+- refactor modular style
+- style with bootstrap or foundation
